@@ -1,0 +1,23 @@
+<!--pages/search/search.wxml-->
+<view class='search_up'>
+  <view class='search_head'>
+    <input value="{{search_work}}" bindblur='changeIpnutValue'></input>
+    <button bindtap='tapSearch'>搜索</button>
+  </view>
+</view>
+<view class='down'>
+  <view class='down_head_title'>全部测试</view>
+  <view class='test_item' wx:for="{{testList}}">
+    <view>
+      <image class='item_img' src='{{item.testLogo}}'></image>
+    </view>
+    <view class='item_msg'>
+      <view class='item_msg1'>{{item.testSubject}}</view>
+      <view class='item_msg2'>{{item.testUseNum}}人在测</view>
+      <view class='item_msg3'>{{item.testPresentation}}</view>
+    </view>
+    <view class='item_button' bindtap='launchToTest' data-payflag='{{item.payFlag}}' data-id="{{item.testId}}">开始测></view>
+  </view>
+  <view class='no_content' wx:if='{{showNone==true}}'>
+  </view>
+</view>

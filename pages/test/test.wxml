@@ -1,0 +1,58 @@
+<!--index.wxml-->
+<!-- <image src='{{bgImg}}' ></image>  -->
+<import src="../../wxParse/wxParse.wxml" />
+<view class="container">
+
+  <scroll-view scroll-y scroll-with-animation="true" scroll-into-view="{{position}}" style=''>
+    <view class='left'>
+      <image class='head' src='/imgs/xcHead.jpg'></image>
+      <view class="talkbubble talkbubble_left talkbubble_text">
+        <view>
+          <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+        </view>
+      </view>
+    </view>
+    <view class='left'>
+      <image class='head' src='/imgs/xcHead.jpg'></image>
+      <view class="talkbubble talkbubble_left talkbubble_img">
+        <image src="{{testPic}}"></image>
+      </view>
+
+    </view>
+
+    <view class='test' wx:for="{{talkList}}" id="id-{{index}}">
+      <view class='left' wx:if="{{item.key==0}}">
+        <image class='head' src='/imgs/xcHead.jpg'></image>
+        <view class="talkbubble talkbubble_left talkbubble_img" wx:if="{{item.isPic}}">
+          <image src="{{item.msg}}" data-imgsrc='{{item.msg}}' bindtap='shoWLargeImg'></image>
+        </view>
+        <view class="talkbubble talkbubble_left talkbubble_text" wx:if="{{!item.isPic}}">
+          <view wx:if="{{!item.isPic}}">{{item.msg}}</view>
+        </view>
+      </view>
+      <view class='right' wx:if="{{item.key==1}}">
+        <image class='head' src='/imgs/userHead.jpg'></image>
+        <view class="talkbubble talkbubble_right talkbubble_text" style='background-color: rgba(159, 231, 88, 1)'>
+          <text>{{item.msg}}</text>
+        </view>
+      </view>
+    </view>
+    <view class='left' wx:if="{{buttonState==3}}">
+      <image class='head' src='/imgs/xcHead.jpg'></image>
+      <view class="talkbubble talkbubble_left talkbubble_text" bindtap='launchToResult'>
+        <view style='color:rgba(159, 231, 88, 1)'>
+          结果分析完毕，点击查看>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <view class='bottom'>
+    <button class='start_button' bindtap='launchToResult'  wx:if="{{buttonState==3}}">查看结果</button>
+    <button class='start_button' bindtap='handleClick' data-optionsid='' wx:if="{{buttonState==1}}">开始测试</button>
+    <button wx:if="{{buttonState==2}}" bindtap='handleClick' class='option_button' wx:for="{{options}}" data-optionskeyword='{{item.optionsKeyword}}' data-optionspoint='{{item.optionsPoint}}' data-optionsid='{{item.optionsId}}'>{{item.optionsKeyword}}</button>
+
+  </view>
+
+</view>
+<!-- <canvas canvas-id="myCanvas" style="" wx:if="{{hideCanvas}}" /> -->

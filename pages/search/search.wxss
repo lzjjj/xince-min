@@ -1,0 +1,30 @@
+/* pages/search/search.wxss */
+.search_up {
+  padding-bottom: 0.5rem;
+  width: 100%;
+  background-color: #fff;
+}
+.search_head {
+  display: flex;
+}
+.search_head>input {
+  padding-left: 2%;
+  margin-left: 2.9%;
+  margin-top: 2%;
+  width: 75%;
+  height: 1.9rem;
+  border: 1px solid #d0d0d0;
+  border-radius: 0.3rem;
+}
+
+.search_head>button {
+  font-family: "YouYuan";
+  font-size: 0.7rem;
+  color: #929292;
+  margin-top: 2%;
+  /* border: 1px solid #fff; */
+  line-height: 1.9rem;
+  width: 17%;
+  height: 1.9rem;
+  background-color: #e8e2e2;
+}

@@ -1,0 +1,52 @@
+<!--viewages/result/result.wxml-->
+<import src="../../wxParse/wxParse.wxml" />
+<view class='result'>
+  <view style=" flex: 1 0 auto;">
+    <image class="bgImg" src="{{resultObj.answerPic}}"></image>
+    <view class="head_title">
+      <view class="title">{{testDetail.testSubject}}</view>
+      <view class="title1" style="padding-top: 2rem;">
+        <template is="wxParse" data="{{wxParseData:answerKeyword.nodes}}" />
+      </view>
+      <view class="title2" style="padding-top: 0.5rem;">
+        <template is="wxParse" data="{{wxParseData:answerSketch.nodes}}" />
+      </view>
+    </view>
+    <view class="descrition">
+      <template is="wxParse" data="{{wxParseData:answerDetails.nodes}}" />
+    </view>
+  </view>
+  <view class="bottm">
+    <!-- <view style="" class="bottom_left">
+      <image class="ercode" src="{{resultObj.answerQRCode}}" data-imgurl='{{resultObj.answerQRCode}}' bindtap='tapErCode'></image>
+      <view class="bottm_center">
+        <view class='bottm_center_first'>{{title}}</view>
+        <view>长按识别二维码，快来测测吧</view>
+      </view>
+    </view>
+    <view class="bottm_right">——心境探测</view> -->
+    <!-- <view class='iconfont' style='color: gray;' >打赏几个钱，桃花增几朵</view> -->
+    <image src='/imgs/word.jpg' style='width:13rem;height:1.7rem;margin-bottom:-0.5rem'></image>
+    <view class='money_botton'>
+      <view style='margin-right:1rem' data-activestate='1' class="{{activeState==1?'unactive active_extra':'unactive'}}" bindtap='payOrder' data-payprice='2'>2
+        <text class='extra_result'>元</text> </view>
+      <view style='margin-right:1rem' class="{{activeState==2?'unactive active_extra':'unactive'}}" bindtap='payOrder' data-activestate='2' data-payprice='5.20'>5.20
+        <text class='extra_result'>元</text>
+      </view>
+      <view class="{{activeState==3?'unactive active_extra':'unactive'}}" data-activestate='3' bindtap='payOrder' data-payprice='8'>8
+        <text class='extra_result'>元</text>
+      </view>
+     
+    </view>
+     <view style='font-size:0.7rem;padding-top:1rem;font-weight:normal'>已有 <text style='color:orange'>{{testDetail.rewardNum?testDetail.rewardNum:10}}</text>人打赏</view>
+    <image class='ercode' src='https://www.magicdn.club/xince/pic/xinceCode.png' data-imgurl='https://www.magicdn.club/xince/pic/xinceCode.png' bindtap='tapErCode'></image>
+    <view >
+      <view class='code_dec'>心境探测的老司机，邀你一起开火车啦！关注微信公众号 <text style='color:orange;font-weight:bold;'>MagicDN</text>,海量测试等你来</view>
+      <view class="bottm_right">——心境探视</view>
+    </view>
+  </view>
+</view>
+<view class='result_buttom'>
+  <view class='result_buttom_up' bindtap='launchToTest' data-payflag='{{testDetail.payFlag}}' data-id="{{testDetail.testId}}">再测一下</view>
+  <button class='result_buttom_down' open-type='share' bindtap='onShareAppMessage'>邀请好友</button>
+</view>

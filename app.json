@@ -1,0 +1,17 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/result/result",
+    "pages/test/test",
+    "pages/search/search",
+    "pages/reward/reward",
+    "pages/payPage/payPage",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "心境探视",
+    "navigationBarTextStyle": "black"
+  }
+}

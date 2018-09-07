@@ -1,0 +1,72 @@
+<!--pages/payPage/payPage.wxml-->
+<import src="../../wxParse/wxParse.wxml" />
+<image src='{{testData.testPic}}' class='paypage_item_img'>
+
+</image>
+<view class='test_name'>
+  {{testData.testSubject}}
+</view>
+<view class='decoration'>
+  <view class='decoration_head'>
+    <view class='box'></view>
+    <view class='box_text'>测试介绍</view>
+  </view>
+  <view class='decoration_text'>
+   <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+  </view>
+</view>
+<view class='notice'>
+  <view class='decoration_head'>
+    <view class='box'></view>
+    <view class='box_text'>测试须知</view>
+  </view>
+  <view class='notice_item'>
+    <view class='notice_item_left'>题目数：</view>
+    <view class='notice_item_right'>{{testData.testNum}}题</view>
+  </view>
+  <view class='notice_item'>
+    <view class='notice_item_left'>预计用时：</view>
+    <view class='notice_item_right'>约{{testData.testUseTime}}分钟</view>
+  </view>
+  <view class='notice_item'>
+    <view class='notice_item_left'>原价：</view>
+    <view class='notice_item_right'>{{testData.testPrice}}元</view>
+  </view>
+  <view class='notice_item'>
+    <view class='notice_item_left'>体验价：</view>
+    <view class='notice_item_right'>{{testData.testPreferentialPrice}}元</view>
+  </view>
+  <view class='notice_item'>
+    <view class='notice_item_left'>报告长度：</view>
+    <view class='notice_item_right'>{{testData.testReportLength}}页</view>
+  </view>
+  <view class='notice_item'>
+    <view class='notice_item_left'>我的性别：</view>
+    <view class='notice_item_right' wx:if="{{sexSelect==1}}">男</view>
+    <view class='notice_item_right' wx:if="{{sexSelect==2}}">女</view>
+  </view>
+  <view class='change_sex' bindtap='updatePop' data-status='1'>修改性别 ></view>
+  <button class='pay_button' bindtap='payOrder'>立即测试（￥{{testData.testPreferentialPrice}}）</button>
+</view>
+<view class='tip'>
+  <view class='decoration_head'>
+    <view class='box'></view>
+    <view class='box_text'>测试提示</view>
+  </view>
+  <view class='tip_item'><template is="wxParse" data="{{wxParseData:article1.nodes}}" /></view>
+  <!-- <view class='tip_item'>①本测评为付费测试，体验价为6.60元</view>
+  <view class='tip_item'>①本测评为付费测试，体验价为6.60元</view>
+  <view class='tip_item'>①本测评为付费测试，体验价为6.60元</view>
+  <view class='tip_item'>①本测评为付费测试，体验价为6.60元</view> -->
+</view>
+<view class='pop' wx:if="{{isShowPop==1}}">
+  <view class='pop_nav'>
+    <view style='' class='pop_nav_title' >选择性别</view>
+    <image bindtap='updatePop' data-status='0' class='pop_cancel' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZBAMAAAA2x5hQAAAAMFBMVEUAAADsbIDsbIDsbYDvcIDsbYDrbIDsbIDrbIDvaoDrbIDvcIDsbIDsbX/tbYDsbYC9fIRRAAAAD3RSTlMA8KBgEMDPUEAw0CDgsHDleMVbAAAA50lEQVQY01WQMU7DQBBFH3IQgQrKrdiO0uEEGJBS0EC4gCnpbHEBqCgRN4CSLqahoOEKSBwAbgDriCiKIk3mSyni10zxtW/nD+JmlC5rVhxaGlkagHizA9jKpw3A9v6LRn8cNF7bAnGSFI4jIPIryOaKxNkENmYcB+hVd/0F3EY+0iNDG/Bdk9dkFnpVC0eREh/p3iKcX7AHHlqLK3b5B/i1T2DzzzMJLaBM71xYutbfyelC18qp/3YsurahrLXLUyvtj3bJpkWmog/FcNLp8Ey3n7pfo+5VQLzbV8FpOW/WbraQqnvPJRXAVVHRLM5kAAAAAElFTkSuQmCC'></image>
+    <view class='selection'>
+      <view class="{{sexSelect==1?'select':'unselect'}}" bindtap='changeSex' data-sex="1">男</view>
+      <view class="{{sexSelect==2?'select':'unselect'}}" bindtap='changeSex' data-sex="2">女</view>
+    </view>
+    <view class='pop_sure' bindtap='updatePop' data-status='0'>确认</view>
+  </view>
+</view>

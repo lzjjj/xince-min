@@ -1,0 +1,51 @@
+<!--pages/index/index.wxml-->
+<view class='up'>
+  <view class='head'>
+    <input bindinput="uodateInputValue"></input>
+    <button bindtap='launchToSearch'>搜索</button>
+  </view>
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <block wx:for="{{imgUrls}}">
+      <swiper-item>
+        <image src="{{item.picPath}}" data-pictype='{{item.picType}}' data-picpath='{{item.picPath}}' data-id="{{item.map.testId}}"  data-payflag='{{item.map.payFlag}}' bindtap="tapSwiper" class="slide-image" />
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class='title'>
+    <view class='title_left'>专业测评</view>
+  </view>
+  <view class='four_part'>
+    <view wx:for="{{partsData}}" bindtap='launchToTest' data-payflag='{{item.map.payFlag}}' data-id="{{item.map.testId}}">
+      <image class='partImg' src='{{item.modulePic}}'></image>
+      <view class='part_title'>{{item.moduleName}}</view>
+    </view>
+  </view>
+</view>
+<view class='down'>
+  <view class='down_head_title'>全部测试</view>
+  <view class='test_item' wx:for="{{testList}}" wx:if="{{testList.length!=0}}">
+    <view>
+      <image class='item_img' src='{{item.testLogo}}'></image>
+    </view>
+    <view class='item_msg'>
+      <view class='item_msg1'>{{item.testSubject}}</view>
+      <view class='item_msg2'>{{item.testUseNum}}人在测</view>
+      <view class='item_msg3'>{{item.testPresentation}}</view>
+    </view>
+    <view class='item_button' bindtap='launchToTest' data-payflag='{{item.payFlag}}' data-id="{{item.testId}}">开始测></view>
+  </view>
+   <view class='no_content' wx:if='{{showNone==true}}'>
+  </view>
+</view>
+<view class='pop' wx:if="{{showPop&updateMsg.total>0}}">
+  <view class='pop_update'>
+    <view class='pop_update_title'>已更新{{updateMsg.total}}条测试</view>
+    <image class='pop_tip' src='data:image/png;base64,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'></image>
+    <image class='index_pop_hide' bindtap='hidePop' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZBAMAAAA2x5hQAAAAMFBMVEUAAADsbIDsbIDsbYDvcIDsbYDrbIDsbIDrbIDvaoDrbIDvcIDsbIDsbX/tbYDsbYC9fIRRAAAAD3RSTlMA8KBgEMDPUEAw0CDgsHDleMVbAAAA50lEQVQY01WQMU7DQBBFH3IQgQrKrdiO0uEEGJBS0EC4gCnpbHEBqCgRN4CSLqahoOEKSBwAbgDriCiKIk3mSyni10zxtW/nD+JmlC5rVhxaGlkagHizA9jKpw3A9v6LRn8cNF7bAnGSFI4jIPIryOaKxNkENmYcB+hVd/0F3EY+0iNDG/Bdk9dkFnpVC0eREh/p3iKcX7AHHlqLK3b5B/i1T2DzzzMJLaBM71xYutbfyelC18qp/3YsurahrLXLUyvtj3bJpkWmog/FcNLp8Ey3n7pfo+5VQLzbV8FpOW/WbraQqnvPJRXAVVHRLM5kAAAAAElFTkSuQmCC'></image>
+    <view class='update_item' wx:for="{{updateMsg.list}}" bindtap='launchToTest' data-payflag='{{item.payFlag}}' data-id="{{item.testId}}" >
+      <view class='dot'></view>
+      <view class='update_item_title'>{{item.testSubject}}</view>
+    </view>
+    <button class='hide_button' bindtap='hidePop'>关闭</button>
+  </view>
+</view>
